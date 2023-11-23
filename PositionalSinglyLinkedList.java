@@ -233,4 +233,47 @@ public Position<E> addLast(E e) {
   size++;
   return newest;
 }
+
+public boolean a_in_b(PositionalSinglyLinkedList<E> p1, PositionalSinglyLinkedList<E> p2)
+{
+   Position<E> first_p1=p1.first();
+   Position<E> first_p2=p2.first();
+    int counter=0;
+  boolean hast=true;
+   while(first_p2.getElement()!=first_p1.getElement()){
+   
+      if(counter<p2.size()-1)
+      {
+        first_p2=p2.after(first_p2);
+      }
+      else{
+        hast=false;
+          break;
+      }
+    counter++;
+   }
+   int size=0;
+    if(p1.size()<=p2.size){
+      size=p1.size()-counter-1;
+    }
+    else{
+      
+        hast=false;
+    }
+   if(hast==true){
+    
+   for(int i=0;i<size;i++){
+    if(p1.after(first_p1).getElement()!=p2.after(first_p2).getElement()){
+      hast=false;
+      break;
+    }
+    first_p1=p1.after(first_p1);
+    first_p2=p2.after(first_p2);
+   }
+    
+  }
+  return hast;
+}
+
+
 }
